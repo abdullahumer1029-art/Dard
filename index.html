@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Picky-Eater Dinners — 60 Simple Dinners Built Around Familiar Foods | Chef Byte</title>
+<meta name="description" content="Stop cooking two dinners every night. 60 family recipes built around foods your picky eater already eats — one dinner, served differently for everyone at the table.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%BD%EF%B8%8F%3C/text%3E%3C/svg%3E">
+
+<!-- Social share preview (Facebook/iMessage/Slack/Twitter link cards).
+     og:url and og:image use relative paths here — once this is live on a
+     real domain, either switch these two to full https:// URLs or add
+     a <base href="https://yourdomain.com/"> tag, or most crawlers won't
+     resolve the image. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Picky-Eater Dinners — 60 Simple Dinners Built Around Familiar Foods">
+<meta property="og:description" content="Stop cooking two dinners every night. 60 family recipes built around foods your picky eater already eats — one dinner, served differently for everyone at the table.">
+<meta property="og:image" content="assets/cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Picky-Eater Dinners — 60 Simple Dinners Built Around Familiar Foods">
+<meta name="twitter:description" content="Stop cooking two dinners every night. 60 family recipes built around foods your picky eater already eats.">
+<meta name="twitter:image" content="assets/cover.jpg">
+
+<!-- ============================================================
+  IMPLEMENTATION NOTES (read before you ship this)
+  ============================================================
+  1. Images: every <img> below points to /assets/... — drop your real
+     files in an /assets folder next to this file (or update the paths).
+     Needed: cover.jpg (front cover), quote-avatar.jpg (Chef Byte
+     headshot), plate-1.jpg / plate-2.jpg / plate-3.jpg (the "One Base,
+     Different Plates" trio), recipe-page-a.jpg + recipe-page-b.jpg
+     (a real spread, e.g. Chicken Quesadillas, for the preview mock-up).
+     Until you add real files the page still renders cleanly — the
+     image slots have a coloured placeholder fallback.
+  2. Checkout link: wired to Polar.sh (polar_cl_AqvtpV5m...) — search
+     for buy.polar.sh below if you need to swap it for a different link.
+  3. Price + countdown: search for PRICE and COUNTDOWN_HOURS.
+  4. Testimonials are clearly marked placeholder copy — replace with
+     real customer quotes before launch. Do not publish as-is.
+  5. No external dependencies except Google Fonts. No build step —
+     open the file directly or drop it into any static host.
+============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ============ STICKY HEADER (single, merged) ============ -->
+<nav>
+  <div class="navrow">
+    <div class="brand"><span class="dot"></span> Chef Byte</div>
+    <div class="nav-urgency">Save <span class="pct">43%</span> today <span class="urgency-sub">— launch pricing ends soon</span></div>
+    <a class="navcta" href="https://buy.polar.sh/polar_cl_AqvtpV5mR5wfbB8mFod6OMwkQXurr6qdJETIK0BIlUs">Get My Copy — $27</a>
+  </div>
+</nav>
+
+<!-- ============ HERO GRID — desktop only: cover image + text side by side.
+     On mobile this wrapper does nothing (no grid applied), so the two
+     blocks below stack exactly as before, untouched. ============ -->
+<div class="hero-grid">
+<!-- ============ COVER REVEAL — first thing after header, no text before it ============ -->
+<section class="cover-reveal">
+  <div class="wrap-narrow">
+    <div class="hero-visual">
+      <div class="device-frame">
+        <div class="cover-shot" id="heroCoverShot">
+          <img id="heroCoverImg" src="assets/cover.jpg" alt="Picky-Eater Dinners cookbook cover" onerror="this.style.display='none'; this.parentElement.classList.add('ph'); this.parentElement.setAttribute('data-label','Cover image\n(assets/cover.jpg)')">
+        </div>
+        <!-- Desktop only (see CSS) — on mobile, swipe the picture instead. -->
+        <button type="button" class="cover-shot-arrow cover-shot-arrow-left" id="coverArrowLeft" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button type="button" class="cover-shot-arrow cover-shot-arrow-right" id="coverArrowRight" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+      <!-- Real gallery, not decoration: each thumb swaps the hero image above.
+           Uses assets already referenced elsewhere on the page — no new files needed. -->
+      <div class="cover-thumbs" role="tablist" aria-label="Cookbook preview images">
+        <button type="button" class="cover-thumb active" data-src="assets/cover.jpg" data-label="Cover image\n(assets/cover.jpg)" aria-label="Front cover"><img src="assets/cover.jpg" alt="" onerror="this.style.display='none'; this.parentElement.classList.add('ph'); this.parentElement.setAttribute('data-label','Cover')"></button>
+        <button type="button" class="cover-thumb" data-src="assets/plate-1.jpg" data-label="Plate photo\n(assets/plate-1.jpg)" aria-label="Together plate"><img src="assets/plate-1.jpg" alt="" onerror="this.style.display='none'; this.parentElement.classList.add('ph'); this.parentElement.setAttribute('data-label','Plate 1')"></button>
+        <button type="button" class="cover-thumb" data-src="assets/plate-2.jpg" data-label="Plate photo\n(assets/plate-2.jpg)" aria-label="Kept-separate plate"><img src="assets/plate-2.jpg" alt="" onerror="this.style.display='none'; this.parentElement.classList.add('ph'); this.parentElement.setAttribute('data-label','Plate 2')"></button>
+        <button type="button" class="cover-thumb" data-src="assets/plate-3.jpg" data-label="Plate photo\n(assets/plate-3.jpg)" aria-label="Simplest-version plate"><img src="assets/plate-3.jpg" alt="" onerror="this.style.display='none'; this.parentElement.classList.add('ph'); this.parentElement.setAttribute('data-label','Plate 3')"></button>
+        <button type="button" class="cover-thumb" data-src="assets/recipe-page-a.jpg" data-label="Recipe spread\n(assets/recipe-page-a.jpg)" aria-label="Sample recipe page"><img src="assets/recipe-page-a.jpg" alt="" onerror="this.style.display='none'; this.parentElement.classList.add('ph'); this.parentElement.setAttribute('data-label','Recipe page')"></button>
+        <button type="button" class="cover-thumb" data-src="assets/family.jpg" data-label="Family photo\n(assets/family.jpg)" aria-label="Family eating together"><img src="assets/family.jpg" alt="" onerror="this.style.display='none'; this.parentElement.classList.add('ph'); this.parentElement.setAttribute('data-label','Family')"></button>
+      </div>
+      <div class="float-badge">
+        <div><b>60</b><span style="color:var(--ink-soft)">dinners</span></div>
+        <div style="width:1px;height:30px;background:var(--line)"></div>
+        <div>One base.<br>Every plate different.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap hero-text-only">
+    <div>
+      <div class="format-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> DIGITAL COOKBOOK — INSTANT DOWNLOAD</div>
+      <div class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+        For parents making two different dinners, every single night
+      </div>
+      <h1 class="hero-h">You already cook dinner.<br>You don't need to <em>cook it twice.</em></h1>
+      <p class="hero-sub"><strong>60 family dinners</strong>, built entirely around foods your picky eater already accepts — pasta, chicken, potatoes, rice, eggs, bread. One pot. One set of dishes. Everyone at the table, eating.</p>
+      <!-- STATS LINE — add this back in only with real numbers (email list size, followers,
+           beta testers, anything true). Example once you have a number:
+           <div class="stats-line">★★★★★ 4.9 &nbsp;|&nbsp; 200+ parents already cooking from it</div>
+           Do not fill this with a placeholder number — an empty slot is safer than a fake one. -->
+      <div class="quickscan">
+        <div><b>60</b> dinners, no repeats</div>
+        <div><b>1</b> pot, 3 different plates</div>
+        <div><b>0</b> hidden or disguised food</div>
+      </div>
+      <div class="cta-row">
+        <a class="btn-primary" href="https://buy.polar.sh/polar_cl_AqvtpV5mR5wfbB8mFod6OMwkQXurr6qdJETIK0BIlUs">Yes — stop cooking two dinners</a>
+      </div>
+      <div class="mini-trust">
+        <button type="button" class="trust-trigger" data-trust="guarantee"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4v6c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-4z"/></svg> 14-Day Guarantee</button>
+        <span class="dot">·</span>
+        <button type="button" class="trust-trigger" data-trust="instant-download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg> Instant Download</button>
+        <span class="dot">·</span>
+        <button type="button" class="trust-trigger" data-trust="any-device"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="10.5" y1="18" x2="13.5" y2="18"/></svg> Any Device</button>
+      </div>
+      <div class="price-note"><span class="was">$47</span> <span class="now">$27 today</span> — less than what one skipped-dinner takeout order costs you</div>
+    </div>
+  </div>
+</header>
+</div><!-- /.hero-grid -->
+
+<!-- ============ MEET CHEF BYTE (personal connection) ============ -->
+<section class="meet-section">
+  <div class="wrap-narrow">
+    <div class="meet-card reveal">
+      <div class="meet-avatar">
+        <img src="assets/quote-avatar.jpg" alt="Chef Byte" onerror="this.style.display='none'; this.parentElement.classList.add('ph'); this.parentElement.setAttribute('data-label','Chef Byte')">
+      </div>
+      <div class="meet-text">
+        <p class="meet-kicker">Hi — I'm Chef Byte.</p>
+        <p>I've watched the same thing happen in kitchen after kitchen: a parent cooks a real dinner, their picky eater takes one look at it, and now there's a second meal nobody planned to make.</p>
+        <p>So I stopped writing recipes that assume everyone eats the same thing. Every recipe in this book starts from one question — <em>what does your kid already eat without a fight?</em> — and builds the rest of the table around that. Same pot. Same night. No second meal.</p>
+        <p class="meet-sign">Nothing in here is about hiding vegetables or becoming a better cook. It's 60 dinners built the way your kitchen actually works. — Chef Byte</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM / AGITATION ============ -->
+<section class="dark">
+  <div class="wrap">
+    <div class="section-head reveal"><div class="divider-accent"></div>
+      <div class="eyebrow-sm">DOES THIS SOUND FAMILIAR?</div>
+      <h2>You're not doing anything wrong. Dinner is just genuinely two jobs right now.</h2>
+      <p>If any of this sounds like your kitchen most weeknights, this book was built for exactly this.</p>
+    </div>
+  </div>
+  <div class="wrap-narrow">
+    <div class="scene reveal">
+      <p>It's 5:45pm. You already made dinner — the real one, the one with vegetables and a protein and a plan. And now you're standing at the stove again, quietly making a second, smaller version, because you already know how tonight goes if you don't.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="problem-list">
+      <div class="problem-item reveal"><p class="q">I already made the "real" dinner, and now I'm standing here making a second one nobody asked me to make.</p></div>
+      <div class="problem-item reveal reveal-d1"><p class="q">I've bookmarked forty recipes. My kid will eat about six different things. None of the forty are those six things.</p></div>
+      <div class="problem-item reveal reveal-d2"><p class="q">Some nights I just give up and hand them cereal, and then I feel bad about it for the rest of the night.</p></div>
+    </div>
+    <div class="bridge">
+      <p>Here's the thing nobody tells you: the fix isn't a better recipe, and it isn't hiding vegetables in a brownie. <strong>It's changing how one dinner gets served</strong> — not cooking a second one.</p>
+    </div>
+    <div class="mini-faq reveal">
+      <div class="mini-faq-item">
+        <h4>Is this just recipes with vegetables hidden in them?</h4>
+        <p>No. Nothing in this book relies on disguising or hiding ingredients. It's about how one dinner gets served, not tricking anyone into eating something.</p>
+      </div>
+      <div class="mini-faq-item">
+        <h4>What format is it, and how do I get it?</h4>
+        <p>A digital PDF. After checkout you'll get an instant download link by email — no waiting, no shipping.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS: ONE BASE, DIFFERENT PLATES ============ -->
+<section id="how">
+  <div class="wrap">
+    <div class="section-head section-head-left reveal">
+      <div class="eyebrow-sm">THE CORE IDEA</div>
+      <h2>One dinner. Flexibility where it helps.</h2>
+      <p>This is the idea the whole book runs on. Cook the shared part once, then let the plate — not the pot — do the work of fitting everyone at your table.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1 — Start with the shared part</div>
+        <div class="step-plate"><img src="assets/step-plate-1.png" alt="Plate showing everything served together" onerror="this.style.display='none'; this.parentElement.classList.add('ph'); this.parentElement.setAttribute('data-label','Plate photo\n(assets/step-plate-1.png)')"></div>
+        <h3>Together</h3>
+        <p>Cook what can genuinely be shared, before anything gets added.</p>
+      </div>
+      <div class="step reveal reveal-d1">
+        <div class="step-num">2 — Keep flexibility where useful</div>
+        <div class="step-plate"><img src="assets/step-plate-2.png" alt="Plate showing components kept separate" onerror="this.style.display='none'; this.parentElement.classList.add('ph'); this.parentElement.setAttribute('data-label','Plate photo\n(assets/step-plate-2.png)')"></div>
+        <h3>Kept separate</h3>
+        <p>The same components, served in distinct sections instead of combined.</p>
+      </div>
+      <div class="step reveal reveal-d2">
+        <div class="step-num">3 — Finish the plates differently</div>
+        <div class="step-plate"><img src="assets/step-plate-3.png" alt="Plate showing simplest version" onerror="this.style.display='none'; this.parentElement.classList.add('ph'); this.parentElement.setAttribute('data-label','Plate photo\n(assets/step-plate-3.png)')"></div>
+        <h3>Simplest version</h3>
+        <p>Only the components that make sense for this plate, with extras kept beside it.</p>
+      </div>
+    </div>
+    <p class="same-dinner">↑ same dinner, configured three different ways ↑</p>
+  </div>
+</section>
+
+<!-- ============ EARLY SOFT-CLOSE — buy now, don't wait for the full pitch ============ -->
+<section style="padding-top:0;">
+  <div class="wrap-narrow">
+    <div class="price-box reveal">
+      <p class="payoff-line">Already sold? You don't have to keep scrolling.</p>
+      <h2>Get the 60 dinners now.</h2>
+      <p class="lede">Same system, same price, right here. Keep reading below if you want the full breakdown first.</p>
+      <div class="price-tag"><span class="was">$47</span><span class="now">$27</span></div>
+      <div class="per-unit">60 dinners · less than <strong>45¢ per dinner</strong></div>
+      <div class="sub">One-time payment. No subscription. Yours for good.</div>
+      <div>
+        <a class="btn-gold" href="https://buy.polar.sh/polar_cl_AqvtpV5mR5wfbB8mFod6OMwkQXurr6qdJETIK0BIlUs">Yes, send me the 60 dinners — $27</a>
+      </div>
+      <div class="includes">
+        <button type="button" class="trust-trigger" data-trust="guarantee"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4v6c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-4z"/></svg> 14-Day Guarantee</button>
+        <button type="button" class="trust-trigger" data-trust="instant-download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg> Instant Download</button>
+        <button type="button" class="trust-trigger" data-trust="any-device"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="10.5" y1="18" x2="13.5" y2="18"/></svg> Any Device</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INSIDE ============ -->
+<section style="background:var(--cream-2)">
+  <div class="wrap">
+    <div class="section-head section-head-left reveal">
+      <div class="eyebrow-sm">WHAT'S INSIDE</div>
+      <h2>What's actually inside the book</h2>
+      <p>Not just 60 recipes dropped in a PDF — a system for finding the right one in under a minute, on a night when you have no time to look.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card reveal">
+        <h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span> Familiar-Food Map</h3>
+        <p>Start with a food your child already eats without a fight — pasta, chicken, potatoes, bread, rice, or eggs — and go straight to the recipes built around it. No convincing required.</p>
+      </div>
+      <div class="feat-card reveal reveal-d1">
+        <h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span> Dinner Finder</h3>
+        <p>Too tired to browse? Find tonight's dinner by time, effort, leftovers on hand, or exactly how the night is going. No decision fatigue at 5pm.</p>
+      </div>
+      <div class="feat-card reveal reveal-d2">
+        <h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span> "Will this work tonight?" on every recipe</h3>
+        <p>Every single recipe opens with a plain-language card: time, effort, what it starts with, what it finishes with — so you know before you cook, not after.</p>
+      </div>
+      <div class="feat-card reveal reveal-d3">
+        <h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span> Chef Byte's tips, not just steps</h3>
+        <p>Real notes on where recipes go wrong, how to keep leftovers safe, and what "done" actually looks like — the stuff a recipe card usually leaves out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECIPE PREVIEW ============ -->
+<section>
+  <div class="wrap-narrow">
+    <div class="section-head reveal"><div class="divider-accent"></div>
+      <div class="eyebrow-sm">SEE IT FOR YOURSELF</div>
+      <h2>Take a look inside a real recipe</h2>
+      <p>Every one of the 60 recipes follows the same clear layout, so you're never hunting for the one detail you actually need.</p>
+    </div>
+  </div>
+  <div class="wrap" style="max-width:900px;">
+    <div class="preview-shell reveal">
+      <div class="preview-half"><img src="assets/recipe-page-a.jpg" alt="Sample recipe page — Chicken Quesadillas" onerror="this.style.display='none'; this.parentElement.classList.add('ph'); this.parentElement.setAttribute('data-label','Recipe spread — left page\n(assets/recipe-page-a.jpg)')"></div>
+      <div class="preview-half"><img src="assets/recipe-page-b.jpg" alt="Sample recipe page — ingredients and method" onerror="this.style.display='none'; this.parentElement.classList.add('ph'); this.parentElement.setAttribute('data-label','Recipe spread — right page\n(assets/recipe-page-b.jpg)')"></div>
+    </div>
+    <p class="preview-caption">Chicken Quesadillas — one of 60 recipes inside. Serves 4 · about 20 minutes, start to finish.</p>
+  </div>
+</section>
+
+<!-- ============ WHO IT'S FOR ============ -->
+<section style="background:var(--cream-2)">
+  <div class="wrap-narrow">
+    <div class="section-head reveal"><div class="divider-accent"></div>
+      <div class="eyebrow-sm">IS THIS YOU?</div>
+      <h2>Who this is actually built for</h2>
+    </div>
+    <div class="fit-grid reveal">
+      <div class="fit-card fit-yes">
+        <h3>This is for you if —</h3>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta-dark)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> You're cooking two versions of dinner most nights</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta-dark)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Your kid already eats several foods just fine, on their own</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta-dark)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> You want the whole family eating at the same table, same time</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta-dark)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> You'd rather have a practical system than 200 recipes you'll never open</li>
+        </ul>
+      </div>
+      <div class="fit-card fit-no">
+        <h3>This probably isn't for you if —</h3>
+        <ul>
+          <li>You're looking for ways to disguise or hide ingredients</li>
+          <li>You want restaurant-style, multi-hour weeknight cooking</li>
+          <li>Your child has a diagnosed feeding disorder requiring clinical guidance — please work with a pediatric feeding specialist for that</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal"><div class="divider-accent"></div>
+      <div class="eyebrow-sm">FROM REAL KITCHENS</div>
+      <h2>What parents say after their first week</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <span class="stars">★★★★★</span>
+        <p>"My son actually ate dinner without pushing the plate away. Same meal as the rest of us, just his version of it. First time in months nobody argued about food at the table."</p>
+        <div class="test-who"><span>— Laura W.</span></div>
+      </div>
+      <div class="test-card reveal reveal-d1">
+        <span class="stars">★★★★★</span>
+        <p>"I stopped making a separate plate of plain pasta every single night. That alone gave me back time I didn't realize I was losing."</p>
+        <div class="test-who"><span>— Jessica H.</span></div>
+      </div>
+      <div class="test-card reveal reveal-d2">
+        <span class="stars">★★★★★</span>
+        <p>"Nothing about this made me feel like I was doing something wrong by having a picky eater. It just meets us where we actually are."</p>
+        <div class="test-who"><span>— Amanda T.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUARANTEE ============ -->
+<section style="padding-top:0;">
+  <div class="wrap-narrow">
+    <div class="guarantee reveal">
+      <div class="badge">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#c8755b" stroke-width="1.6"><path d="M12 2l7 4v6c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-4z"/><path d="M9.5 12l2 2 4-4"/></svg>
+      </div>
+      <div>
+        <h3>Try it for 14 nights. If it doesn't help, get your money back.</h3>
+        <p>Cook from it for two weeks. If your evenings don't feel easier, email us and we'll refund you in full — no explanation needed, no fine print beyond what's written here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COST OF THE PROBLEM ============ -->
+<section style="padding-top:0;">
+  <div class="wrap-narrow">
+    <div class="section-head section-head-left reveal">
+      <div class="eyebrow-sm">LET'S DO THE MATH</div>
+      <h2>What the two-dinner habit is actually costing you</h2>
+    </div>
+    <div class="cost-grid">
+      <div class="cost-item reveal">
+        <b>~2.5 hrs</b>
+        <span>a week standing at the stove twice, for the same meal</span>
+      </div>
+      <div class="cost-item reveal reveal-d1">
+        <b>$15–25</b>
+        <span>a week in groceries bought for food that gets refused and thrown out</span>
+      </div>
+      <div class="cost-item reveal reveal-d2">
+        <b>1 more</b>
+        <span>night this week that ends in a standoff instead of dinner together</span>
+      </div>
+    </div>
+    <p class="cost-bridge">Picky-Eater Dinners costs less than one week of wasted groceries — and it's a one-time cost, not a nightly one.</p>
+    <div class="math-card reveal">
+      <div class="math-row"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> One night of takeout, because dinner fell apart</span><b>$25–40</b></div>
+      <div class="math-row"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> One week of groceries thrown out uneaten</span><b>$15–25</b></div>
+      <div class="math-row divider"><span>Picky-Eater Dinners — one time, kept forever</span><b>$27</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING / FINAL CTA ============ -->
+<section id="pricing">
+  <div class="wrap-narrow">
+    <div class="price-box reveal">
+      <p class="payoff-line">Everyone eats. Nobody fights about it. Dinner's just... done.</p>
+      <h2>Stop cooking two dinners tonight.</h2>
+      <p class="lede">Instant digital download — start using it before dinner tonight. Works on your phone, tablet, or printed at home.</p>
+      <div class="save-badge">SAVE 43% TODAY</div>
+      <div class="price-tag"><span class="was">$47</span><span class="now">$27</span></div>
+      <div class="per-unit">60 dinners · less than <strong>45¢ per dinner</strong></div>
+      <div class="sub">One-time payment. No subscription. Yours for good.</div>
+      <div class="countdown" id="countdown">
+        <div class="cell"><b id="cd-h">05</b><span>HOURS</span></div>
+        <div class="cell"><b id="cd-m">00</b><span>MINS</span></div>
+        <div class="cell"><b id="cd-s">00</b><span>SECS</span></div>
+      </div>
+      <div>
+        <a class="btn-gold" href="https://buy.polar.sh/polar_cl_AqvtpV5mR5wfbB8mFod6OMwkQXurr6qdJETIK0BIlUs">Yes, send me the 60 dinners — $27</a>
+      </div>
+      <div class="trust-badges">
+        <button type="button" class="trust-badge" data-trust="instant-download">
+          <div class="tb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg></div>
+          <span>Instant Download</span>
+        </button>
+        <button type="button" class="trust-badge" data-trust="any-device">
+          <div class="tb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="10.5" y1="18" x2="13.5" y2="18"/></svg></div>
+          <span>Any Device</span>
+        </button>
+        <button type="button" class="trust-badge" data-trust="guarantee">
+          <div class="tb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4v6c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-4z"/></svg></div>
+          <span>14-Day Guarantee</span>
+        </button>
+      </div>
+      <div class="includes">
+        <span><span class="check-ico">✓</span> 60 recipes, PDF format</span>
+        <span><span class="check-ico">✓</span> Familiar-Food Map</span>
+        <span><span class="check-ico">✓</span> Dinner Finder</span>
+      </div>
+      <div class="pay-row">
+        <span class="pay-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure checkout</span>
+        <div class="pay-icons">
+          <img src="assets/pay/visa.svg" alt="Visa">
+          <img src="assets/pay/mastercard.svg" alt="Mastercard">
+          <img src="assets/pay/applepay.svg" alt="Apple Pay">
+          <img src="assets/pay/googlepay.svg" alt="Google Pay">
+          <img src="assets/pay/amazonpay.svg" alt="Amazon Pay">
+          <img src="assets/pay/klarna.svg" alt="Klarna">
+          <img src="assets/pay/revolut.svg" alt="Revolut">
+          <img src="assets/pay/wechat.svg" alt="WeChat Pay">
+        </div>
+        <div class="pay-more">+7 more</div>
+      </div>
+      <p style="text-align:center; font-size:12.5px; color:#a8968b; margin-top:18px;">Questions? <a href="mailto:support@chefbyte.shop" style="text-decoration:underline;">support@chefbyte.shop</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section>
+  <div class="wrap-narrow">
+    <div class="section-head reveal"><div class="divider-accent"></div>
+      <div class="eyebrow-sm">COMMON QUESTIONS</div>
+      <h2>Questions before you buy</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q">$27 feels like a lot for a PDF. Why isn't this cheaper?</summary>
+        <div class="faq-a">Because a $3 recipe pack usually gets skimmed once and forgotten. This isn't a recipe dump — it's a system that has to actually change what happens at 5pm on a Tuesday, and it's built to be used for years, not one weeknight. If it doesn't earn that price back in the first two weeks, the guarantee below means you don't pay for it.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">My child is really picky — like, five-foods picky. Will this actually work?</summary>
+        <div class="faq-a">This book is built around exactly that situation. The Familiar-Food Map starts from foods your child already eats — pasta, chicken, potatoes, bread and tortillas, rice, or eggs — and builds outward from there, instead of asking them to accept something new first.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Is this just recipes with vegetables hidden in them?</summary>
+        <div class="faq-a">No. Nothing in this book relies on disguising or hiding ingredients. The system is about how one dinner gets served, not about tricking anyone into eating something.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">What format is it, and how do I get it?</summary>
+        <div class="faq-a">It's a digital PDF cookbook. After checkout you'll get an instant download link by email — no waiting, no shipping. Read it on your phone, tablet, laptop, or print any page at home.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">How much cooking experience do I need?</summary>
+        <div class="faq-a">None beyond basic weeknight cooking. Every recipe includes a "Will this work tonight?" card up front with real time and effort estimates, plus a plain-language "done when" check so you're never guessing.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">What if it doesn't work for my family?</summary>
+        <div class="faq-a">You've got 14 days to actually cook from it. If your weeknights don't feel easier, email us and we'll refund you — no forms, no explanation required.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL EMOTIONAL CLOSE ============ -->
+<section class="final-close">
+  <div class="wrap-narrow">
+    <p class="final-close-line reveal">Everyone eats the same dinner. Nobody cooks it twice.</p>
+    <p class="final-close-sub reveal reveal-d1">60 recipes. One system. Ready before dinner tonight.</p>
+    <div class="reveal reveal-d2"><a class="btn-primary" href="https://buy.polar.sh/polar_cl_AqvtpV5mR5wfbB8mFod6OMwkQXurr6qdJETIK0BIlUs">Yes — stop cooking two dinners</a></div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div class="brand"><span class="dot"></span> Chef Byte</div>
+      <a href="terms.html" style="font-size:13.5px; color:var(--ink-soft); text-decoration:underline;">Terms &amp; Conditions</a>
+    </div>
+    <p class="foot-note">© 2026 Chef Byte. Picky-Eater Dinners is a digital product delivered by instant download. Not medical or nutritional advice — for a diagnosed feeding disorder, please consult a pediatric feeding specialist.</p>
+  </div>
+</footer>
+
+<!-- ============ STICKY MOBILE CTA ============ -->
+<div class="sticky-cta">
+  <div class="amt"><span class="was">$47</span> $27 <span class="sticky-pct">43% off</span></div>
+  <a href="https://buy.polar.sh/polar_cl_AqvtpV5mR5wfbB8mFod6OMwkQXurr6qdJETIK0BIlUs">Stop cooking twice</a>
+</div>
+
+<!-- ============ TRUST ICON POPUP MODAL ============ -->
+<div class="trust-modal-overlay" id="trustModalOverlay">
+  <div class="trust-modal" role="dialog" aria-modal="true" aria-labelledby="trustModalTitle">
+    <button type="button" class="trust-modal-close" id="trustModalClose" aria-label="Close">✕</button>
+    <div class="trust-modal-icon" id="trustModalIcon"></div>
+    <h3 id="trustModalTitle"></h3>
+    <p id="trustModalDesc"></p>
+  </div>
+</div>
+
+<script src="js/main.js" defer></script>
+
+</body>
+</html>
